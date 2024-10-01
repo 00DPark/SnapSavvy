@@ -61,5 +61,26 @@
       "description": "20x15 photograph of a winding Roadway",
       "price": 26,
       "image": "/images/pexels-roadway.jpg"
+  },
+  {
+      "id": "10",
+      "name": "Small Town",
+      "description": "28x20 photograph of a small town",
+      "price": 32,
+      "image": "/images/pexels-street.jpg"
+  },
+  {
+      "id": "11",
+      "name": "Espresso",
+      "description": "20x15 photograph of a magnificent Espresso",
+      "price": 22,
+      "image": "/images/pexels-espresso.jpg"
+  },
+  {
+      "id": "12",
+      "name": "Sweets",
+      "description": "30x20 photograph of delicious Sweets",
+      "price": 15,
+      "image": "/images/pexels-sweets.jpg"
   }
 ]
