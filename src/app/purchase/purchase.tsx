@@ -1,6 +1,9 @@
 "use client";
-import Image from 'next/image';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import productsData from '../data/products.json'; 
+import Header from './header';
+import ProductList from './productList';
+import Footer from './footer';
 
 type Product = {
   id: string;
@@ -15,17 +18,12 @@ const Purchase = () => {
 
   return (
     <div>
-      <h1>Products</h1>
-      <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-        {products.map((product) => (
-          <div key={product.id} style={{ border: '1px solid #ccc', padding: '20px', width: '200px' }}>
-            <Image src={product.image} alt={product.name} width={200} height={200} />
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>${product.price.toFixed(2)}</p>
-          </div>
-        ))}
-      </div>
+      <Header />
+      <main className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold mb-6">Latest Products </h1>
+        <ProductList products={products} />
+      </main>
+      <Footer />
     </div>
   );
 };
