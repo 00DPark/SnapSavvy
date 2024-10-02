@@ -1,4 +1,4 @@
-import Purchase from './purchase';
+import Purchase from './homePage/purchase';
 
 const PurchasePage = () => {
   return (

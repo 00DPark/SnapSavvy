@@ -1,6 +1,6 @@
 "use client";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import productsData from '../data/products.json'; 
+import productsData from '../../data/products.json'; 
 import Header from './header';
 import ProductList from './productList';
 import Footer from './footer';
