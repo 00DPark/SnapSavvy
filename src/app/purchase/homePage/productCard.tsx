@@ -40,14 +40,14 @@ const ProductCard = ({ product }: { product: Product }) => {
       <div className="flex items-center space-x-4 mt-4">
         <button
           onClick={removeFromCart}
-          className="w-10 h-10 bg-gray-500 text-white rounded-full hover:bg-red-600 flex justify-center items-center transition duration-300 ease-in-out"
+          className="w-10 h-10 bg-gray-500 text-white rounded-full flex justify-center items-center transition duration-300 ease-in-out"
         >
           -
         </button>
         <h1 className="text-lg">{productCount}</h1>
         <button
           onClick={addToCart}
-          className="w-10 h-10 bg-gray-800 text-white rounded-full hover:bg-green-600 flex justify-center items-center transition duration-300 ease-in-out"
+          className="w-10 h-10 bg-gray-800 text-white rounded-full  flex justify-center items-center transition duration-300 ease-in-out"
         >
           +
         </button>
