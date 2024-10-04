@@ -1,12 +1,5 @@
 import ProductCard from './productCard';
-
-type Product = {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-};
+import { Product } from './productCard';
 
 const ProductList = ({ products }: { products: Product[] }) => {
   return (
