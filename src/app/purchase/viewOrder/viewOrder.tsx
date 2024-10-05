@@ -1,38 +1,32 @@
 "use client";
- 
+
 import { useState, useEffect } from 'react';
 import * as productHelper from "../helper/productHelper";
 import { Product } from "../homePage/productCard";
 import Header from "../homePage/header";
 import Footer from "../homePage/footer";
-import Link from "next/link"; // Import Link
- 
+import CheckoutButton from '../viewConfirmation/checkoutButton';
+
 const ViewOrder = () => {
   const [cartItems, setCartItems] = useState<{ product: Product; quantity: number }[]>([]);
   const [totalCost, setTotalCost] = useState<number>(0);
- 
+
   useEffect(() => {
     const items = productHelper.getPurchasedProducts(); // Assuming this returns a Map<Product, number>
-   
+
     // Transform the map into an array of objects for easier rendering
     const transformedItems = Array.from(items).map(([product, quantity]) => ({ product, quantity }));
-   
+
     setCartItems(transformedItems);
     calculateTotalCost(transformedItems);
   }, []);
- 
+
   const calculateTotalCost = (items: { product: Product; quantity: number }[]) => {
     const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
     setTotalCost(total);
   };
- 
-  const confirmOrder = () => {
-    if (window.confirm('Do you want to confirm this order?')) {
-      productHelper.clearCart();
-      alert('Your order has been confirmed!');
-    }
-  };
- 
+
+
   return (
     <div>
       <Header />
@@ -67,15 +61,8 @@ const ViewOrder = () => {
             <h2 className="text-2xl font-bold mt-4">
               Total Cost: ${totalCost.toFixed(2)}
             </h2>
-            {/* Wrap the confirm button in a Link */}
-            <Link href ="/purchase/viewConfirmation">
-              <button
-                onClick={confirmOrder}
-                className="mt-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-              >
-                Confirm Order
-              </button>
-            </Link>
+            {/* Remove Link and handle navigation in confirmOrder */}
+            <CheckoutButton photoId={0} price={0}/>
           </>
         )}
       </main>
@@ -83,5 +70,5 @@ const ViewOrder = () => {
     </div>
   );
 };
- 
+
 export default ViewOrder;

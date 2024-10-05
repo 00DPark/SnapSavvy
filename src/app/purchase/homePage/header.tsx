@@ -9,9 +9,7 @@ const Header = () => {
         <nav>
           <ul className="flex items-center space-x-6">
             <li><a href="#" className="text-white hover:underline">Home</a></li>
-            <li><a href="#" className="text-white hover:underline">Products</a></li>
-            <li><a href="#" className="text-white hover:underline">About</a></li>
-            <li><a href="#" className="text-white hover:underline">Contact</a></li>
+            <li><a href="purchase" className="text-white hover:underline">Products</a></li>
             <li>
               <Link href="/purchase/viewOrder">
                 <Cart />
