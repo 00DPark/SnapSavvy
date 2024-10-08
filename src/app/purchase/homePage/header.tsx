@@ -8,8 +8,9 @@ const Header = () => {
         <h1 className="text-2xl font-bold">Welcome to SnapSavvy!!! 🙂</h1>
         <nav>
           <ul className="flex items-center space-x-6">
-            <li><a href="#" className="text-white hover:underline">Home</a></li>
-            <li><a href="purchase" className="text-white hover:underline">Products</a></li>
+            <li><Link href="/" className="text-white hover:underline">Home</Link></li>
+            <li><Link href="/about" className="text-white hover:underline">About</Link></li>
+            <li><Link href="/contact" className="text-white hover:underline">Contact</Link></li>
             <li>
               <Link href="/purchase/viewOrder">
                 <Cart />
