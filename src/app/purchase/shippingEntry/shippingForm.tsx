@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import CheckoutButton from '../viewConfirmation/checkoutButton';
 
 interface Address {
   street: string;
@@ -88,7 +89,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
           required
         />
       </div>
-      <button type="submit">Proceed to Payment</button>
+        <CheckoutButton photoId={0} price={0}/>
     </form>
   );
 };

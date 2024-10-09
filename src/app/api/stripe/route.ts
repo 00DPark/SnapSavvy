@@ -61,8 +61,8 @@ export async function POST(request: Request) {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/checkout/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/checkout/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/viewConfirmation`,
+      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/viewCancel`,
     });
 
     // Respond with the Stripe session ID

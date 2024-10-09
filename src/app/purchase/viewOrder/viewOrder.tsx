@@ -5,7 +5,7 @@ import * as productHelper from "../helper/productHelper";
 import { Product } from "../homePage/productCard";
 import Header from "../homePage/header";
 import Footer from "../homePage/footer";
-import CheckoutButton from '../viewConfirmation/checkoutButton';
+import RedirectButton from './redirectButton';
 
 const ViewOrder = () => {
   const [cartItems, setCartItems] = useState<{ product: Product; quantity: number }[]>([]);
@@ -61,8 +61,7 @@ const ViewOrder = () => {
             <h2 className="text-2xl font-bold mt-4">
               Total Cost: ${totalCost.toFixed(2)}
             </h2>
-            {/* Remove Link and handle navigation in confirmOrder */}
-            <CheckoutButton photoId={0} price={0}/>
+            <RedirectButton/>
           </>
         )}
       </main>
