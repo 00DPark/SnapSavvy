@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Footer from '../homePage/footer';
 import Header from '../homePage/header';
+import { setCustomerName } from '../helper/checkoutHelper';
 
 interface Address {
   street: string;
@@ -47,7 +48,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
               <input
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {setName(e.target.value); setCustomerName(e.target.value)}}
                 required
                 className="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
               />
@@ -111,7 +112,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
           </form>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

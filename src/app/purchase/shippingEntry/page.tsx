@@ -22,7 +22,6 @@ const CheckoutPage = () => {
 
   const handleShippingSubmit = async (details: ShippingDetails) => {
     setShippingDetails(details);  // Store shipping details in state for later use
-
     const stripe = await stripePromise;
 
     // Send shipping and product info to the API route
@@ -33,7 +32,7 @@ const CheckoutPage = () => {
       },
       body: JSON.stringify({
         photoId: 1,   // Example photo ID, replace as needed
-        price: 20,    // Example price, replace as needed
+        price: 200,    // Example price, replace as needed
         shippingDetails: details,  // Pass shipping details to backend
       }),
     });
@@ -51,7 +50,6 @@ const CheckoutPage = () => {
 
   return (
     <div>
-      <h1>Checkout</h1>
       <ShippingForm onSubmit={handleShippingSubmit} />
 
       {/* Optionally display shipping details after form submission */}
