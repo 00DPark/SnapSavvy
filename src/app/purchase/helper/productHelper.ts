@@ -51,3 +51,39 @@ export function getProductTotal(product: Product)
 {
   return getPurchasedProducts().get(product);
 }
+
+export async function checkInventory(): Promise<number> {
+  const purchasedProducts = getPurchasedProducts();
+  const entries = Array.from(purchasedProducts.entries());
+
+  for (const [product, quantity] of entries) {
+    const itemName = product.name;
+
+    try {
+      const inventoryCheckResponse = await fetch(
+        `https://0d2vpawpie.execute-api.us-east-1.amazonaws.com/Test/orderprocessing?itemName=${encodeURIComponent(itemName)}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (inventoryCheckResponse.status !== 200) {
+        console.error(`Inventory check failed for item: ${itemName} with status ${inventoryCheckResponse.status}`);
+        return inventoryCheckResponse.status; // Exit early with the non-200 status
+      }
+
+      const data = await inventoryCheckResponse.json();
+      console.log(`Inventory check for ${itemName}:`, data);
+
+    } catch (error) {
+      console.error(`Error checking inventory for item: ${itemName}`, error);
+      return 500; // Return 500 for internal error
+    }
+  }
+
+  // If all requests were successful, return 200
+  return 200;
+}

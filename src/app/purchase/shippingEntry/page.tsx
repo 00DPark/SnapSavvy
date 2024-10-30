@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import ShippingForm from './shippingForm';
 import { loadStripe } from '@stripe/stripe-js';
-
+import { placeOrder } from '@/app/api/stripe/inventory';
+import { checkInventory } from '../helper/productHelper';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 interface ShippingDetails {
@@ -18,12 +19,31 @@ interface ShippingDetails {
 }
 
 const CheckoutPage = () => {
+
   const [shippingDetails, setShippingDetails] = useState<ShippingDetails | null>(null);
 
   const handleShippingSubmit = async (details: ShippingDetails) => {
+
     setShippingDetails(details);  // Store shipping details in state for later use
     const stripe = await stripePromise;
-
+    // let Product: Product= getPurchasedProducts().
+    // const inventoryCheckResponse = await fetch(`https://0d2vpawpie.execute-api.us-east-1.amazonaws.com/Test/orderprocessing?{}`, {
+    //   method: 'GET',
+    //   headers: {
+    //   'Content-Type': 'application/json',
+    //       }
+    //     });
+       
+    //     if (!inventoryCheckResponse.ok) {
+    //       console.error('Inventory check failed or item is out of stock');
+    //   return;
+    //     }
+    const inventoryStatus:number = await checkInventory();
+    if(inventoryStatus != 200)
+    {
+      console.error("Inventory does not contain product");
+      return;
+    }
     // Send shipping and product info to the API route
     const response = await fetch('/api/stripe', {
       method: 'POST',
@@ -36,7 +56,7 @@ const CheckoutPage = () => {
         shippingDetails: details,  // Pass shipping details to backend
       }),
     });
-
+    
     const session = await response.json();
 
     // Redirect to Stripe Checkout page
@@ -45,6 +65,22 @@ const CheckoutPage = () => {
     // Check if there is an error and handle it
     if (result?.error) {
       console.error('Stripe Checkout Error:', result.error.message);
+    }
+
+    const orderData= 
+    {
+      customer_name: "John Doe",
+      items:[
+        {item_name: "Boats", item_id: 2, quantity_ordered: 2},
+        {item_name: "Cliffside", item_id: 5, quantity_ordered: 2}
+      ]
+    }
+    const orderResponse: Response = await placeOrder(orderData);
+
+    if(!orderResponse.ok)
+    {
+      console.error("Inventory update failed");
+      console.error(orderResponse.json)
     }
   };
 

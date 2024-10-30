@@ -23,6 +23,8 @@ interface CheckoutRequestBody {
 // POST function to handle the Stripe session creation
 export async function POST(request: Request) {
   try {
+    //try sending the POST Request to API if its not 200 throw an exception
+    
     // Parse the request body and ensure it matches the expected interface
     const { photoId, price }: CheckoutRequestBody = await request.json();
 
