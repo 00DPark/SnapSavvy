@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Footer from '../homePage/footer';
 import Header from '../homePage/header';
-import { setCustomerName } from '../helper/checkoutHelper';
+import { setCustomerName, setCustomerAddressCity, setCustomerAddressPostalCode, setCustomerAddressCountry, setCustomerAddressState, setCustomerAddressStreet } from '../helper/checkoutHelper';
 
 interface Address {
   street: string;
@@ -58,7 +58,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
               <input
                 type="text"
                 value={address.street}
-                onChange={(e) => setAddress({ ...address, street: e.target.value })}
+                onChange={(e) => {setAddress({ ...address, street: e.target.value }); setCustomerAddressStreet(e.target.value)}}
                 required
                 className="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
               />
@@ -68,7 +68,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
               <input
                 type="text"
                 value={address.city}
-                onChange={(e) => setAddress({ ...address, city: e.target.value })}
+                onChange={(e) => {setAddress({ ...address, city: e.target.value }); setCustomerAddressCity(e.target.value)}}
                 required
                 className="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
               />
@@ -78,7 +78,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
               <input
                 type="text"
                 value={address.state}
-                onChange={(e) => setAddress({ ...address, state: e.target.value })}
+                onChange={(e) => {setAddress({ ...address, state: e.target.value }); setCustomerAddressState(e.target.value)}}
                 required
                 className="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
               />
@@ -88,7 +88,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
               <input
                 type="text"
                 value={address.postalCode}
-                onChange={(e) => setAddress({ ...address, postalCode: e.target.value })}
+                onChange={(e) => {setAddress({ ...address, postalCode: e.target.value }); setCustomerAddressPostalCode(e.target.value)}}
                 required
                 className="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
               />
@@ -98,7 +98,7 @@ const ShippingForm = ({ onSubmit }: ShippingFormProps) => {
               <input
                 type="text"
                 value={address.country}
-                onChange={(e) => setAddress({ ...address, country: e.target.value })}
+                onChange={(e) => {setAddress({ ...address, country: e.target.value }); setCustomerAddressCountry(e.target.value)}}
                 required
                 className="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
               />
