@@ -14,7 +14,7 @@ export async function placeOrder(orderData: any) {
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
-  
+      
       return await response.json();
     } catch (error) {
       console.error('Order submission error:', error);

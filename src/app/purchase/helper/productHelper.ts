@@ -61,7 +61,7 @@ export async function checkInventory(): Promise<number> {
 
     try {
       const inventoryCheckResponse = await fetch(
-        `https://0d2vpawpie.execute-api.us-east-1.amazonaws.com/Test/orderprocessing?itemName=${encodeURIComponent(itemName)}`,
+        `https://0d2vpawpie.execute-api.us-east-1.amazonaws.com/Test/inventory-management/inventory?name=${encodeURIComponent(itemName)}&quantity=${encodeURIComponent(quantity)}`,
         {
           method: 'GET',
           headers: {
