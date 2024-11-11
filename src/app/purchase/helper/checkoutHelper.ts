@@ -1,113 +1,131 @@
-let CustomerName:string;
-let AddressStreet:string;
-let AddressCity:string;
-let AddressState:string;
-let AddressPostalCode:string;
-let AddressCountry:string;
+let CustomerName: string = loadFromLocalStorage("CustomerName") || "";
+let AddressStreet: string = loadFromLocalStorage("AddressStreet") || "";
+let AddressCity: string = loadFromLocalStorage("AddressCity") || "";
+let AddressState: string = loadFromLocalStorage("AddressState") || "";
+let AddressPostalCode: string = loadFromLocalStorage("AddressPostalCode") || "";
+let AddressCountry: string = loadFromLocalStorage("AddressCountry") || "";
+
+/**
+ * Saves a value to localStorage
+ * @param key The key to save in localStorage
+ * @param value The value to save
+ */
+function saveToLocalStorage(key: string, value: string) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(key, value);
+  }
+}
+
+/**
+ * Loads a value from localStorage
+ * @param key The key to load from localStorage
+ * @returns The stored value, or null if not set
+ */
+function loadFromLocalStorage(key: string): string | null {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(key);
+  }
+  return null;
+}
+
 /**
  * Gets the name of the customer
  * @returns the customer name
  */
-export function getCustomerName()
-{
+export function getCustomerName() {
   return CustomerName;
 }
 
 /**
- * Allows for the customer name to be set
+ * Sets the customer name and saves it to localStorage
  * @param name holds the name of the customer
  */
-export function setCustomerName(name:string)
-{
+export function setCustomerName(name: string) {
   CustomerName = name;
+  saveToLocalStorage("CustomerName", name);
 }
 
 /**
- * Allows for the address value to be set
- * @param name holds the name of the customer
+ * Sets the customer street address and saves it to localStorage
+ * @param street holds the street address
  */
-export function setCustomerAddressStreet(street:string)
-{
-  AddressStreet= street;
+export function setCustomerAddressStreet(street: string) {
+  AddressStreet = street;
+  saveToLocalStorage("AddressStreet", street);
 }
 
 /**
- * Gets the name of the customer
- * @returns the address section
+ * Gets the customer street address
+ * @returns the address street
  */
-export function getCustomerAddressStreet()
-{
+export function getCustomerAddressStreet() {
   return AddressStreet;
 }
 
 /**
- * Allows for the address value to be set
+ * Sets the customer city and saves it to localStorage
  * @param city holds the address city
  */
-export function setCustomerAddressCity(city:string)
-{
-  AddressCity= city;
+export function setCustomerAddressCity(city: string) {
+  AddressCity = city;
+  saveToLocalStorage("AddressCity", city);
 }
 
 /**
- * Gets the name of the customer
- * @returns the address section
+ * Gets the customer city
+ * @returns the address city
  */
-export function getCustomerAddressCity()
-{
+export function getCustomerAddressCity() {
   return AddressCity;
 }
 
 /**
- * Allows for the address value to be set
+ * Sets the customer state and saves it to localStorage
  * @param state holds the address state
  */
-export function setCustomerAddressState(state:string)
-{
-  AddressState= state;
+export function setCustomerAddressState(state: string) {
+  AddressState = state;
+  saveToLocalStorage("AddressState", state);
 }
 
 /**
- * Gets the name of the customer
- * @returns the address section
+ * Gets the customer state
+ * @returns the address state
  */
-export function getCustomerAddressState()
-{
+export function getCustomerAddressState() {
   return AddressState;
 }
 
 /**
- * Allows for the address value to be set
+ * Sets the postal code and saves it to localStorage
  * @param code holds the postal code
  */
-export function setCustomerAddressPostalCode(code:string)
-{
-  AddressPostalCode= code;
+export function setCustomerAddressPostalCode(code: string) {
+  AddressPostalCode = code;
+  saveToLocalStorage("AddressPostalCode", code);
 }
 
 /**
- * Gets the name of the customer
- * @returns the address section
+ * Gets the postal code
+ * @returns the postal code
  */
-export function getCustomerAddressPostalCode()
-{
+export function getCustomerAddressPostalCode() {
   return AddressPostalCode;
 }
 
 /**
- * Allows for the address value to be set
+ * Sets the country and saves it to localStorage
  * @param country holds the address country
  */
-export function setCustomerAddressCountry(country:string)
-{
-  AddressCountry= country;
+export function setCustomerAddressCountry(country: string) {
+  AddressCountry = country;
+  saveToLocalStorage("AddressCountry", country);
 }
 
 /**
- * Gets the name of the customer
- * @returns the address section
+ * Gets the country
+ * @returns the address country
  */
-export function getCustomerAddressCountry()
-{
+export function getCustomerAddressCountry() {
   return AddressCountry;
 }
