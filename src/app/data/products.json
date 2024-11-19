@@ -4,83 +4,95 @@
       "name": "9/11 Memorial",
       "description": "20x12 photograph of the 9/11 Memorial located in New York City, NY",
       "price": 100,
-      "image": "/images/911_Memorial.jpeg"
+      "image": "/images/911_Memorial.jpeg",
+      "weight": "2.45"
   },
   {
       "id": "2",
       "name": "Boats",
       "description": "24x16 photograph of Boats on the water",
       "price": 30,
-      "image": "/images/pexels-boats.jpg"
+      "image": "/images/pexels-boats.jpg",
+      "weight": "3.65"
   },
   {
       "id": "3",
       "name": "Bridge",
       "description": "30x20 photograph of a beautiful Bridge",
       "price": 35,
-      "image": "/images/pexels-bridge.jpg"
+      "image": "/images/pexels-bridge.jpg",
+      "weight": "5.45"
   },
   {
       "id": "4",
       "name": "Capitol",
       "description": "18x12 photograph of the Capitol building",
       "price": 28,
-      "image": "/images/pexels-capitol.jpg"
+      "image": "/images/pexels-capitol.jpg",
+      "weight": "1.24"
   },
   {
       "id": "5",
       "name": "Cliffside",
       "description": "22x14 photograph of a stunning Cliffside view",
       "price": 32,
-      "image": "/images/pexels-cliffside.jpg"
+      "image": "/images/pexels-cliffside.jpg",
+      "weight": "1.45"
   },
   {
       "id": "6",
       "name": "Farmhouse",
       "description": "16x10 photograph of a charming Farmhouse",
       "price": 27,
-      "image": "/images/pexels-farmhouse.jpg"
+      "image": "/images/pexels-farmhouse.jpg",
+      "weight": "1.05"
   },
   {
       "id": "7",
       "name": "Flowers",
       "description": "12x12 photograph of vibrant Flowers in bloom",
       "price": 22,
-      "image": "/images/pexels-flowers.jpg"
+      "image": "/images/pexels-flowers.jpg",
+      "weight": "2.00"
   },
   {
       "id": "8",
       "name": "Lighthouse",
       "description": "28x18 photograph of a scenic Lighthouse",
       "price": 33,
-      "image": "/images/pexels-lighthouse.jpg"
+      "image": "/images/pexels-lighthouse.jpg",
+      "weight": "2.55"
   },
   {
       "id": "9",
       "name": "Roadway",
       "description": "20x15 photograph of a winding Roadway",
       "price": 26,
-      "image": "/images/pexels-roadway.jpg"
+      "image": "/images/pexels-roadway.jpg",
+      "weight": "2.05"
   },
   {
       "id": "10",
       "name": "Small Town",
       "description": "28x20 photograph of a small town",
       "price": 32,
-      "image": "/images/pexels-street.jpg"
+      "image": "/images/pexels-street.jpg",
+      "weight": "3.05"
   },
   {
       "id": "11",
       "name": "Espresso",
       "description": "20x15 photograph of a magnificent Espresso",
       "price": 22,
-      "image": "/images/pexels-espresso.jpg"
+      "image": "/images/pexels-espresso.jpg",
+      "weight": "1.95"
   },
   {
       "id": "12",
       "name": "Sweets",
       "description": "30x20 photograph of delicious Sweets",
       "price": 15,
-      "image": "/images/pexels-sweets.jpg"
+      "image": "/images/pexels-sweets.jpg",
+      "weight": "4.45"
   }
 ]

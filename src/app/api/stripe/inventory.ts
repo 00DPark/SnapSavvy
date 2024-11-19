@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Product } from "@/app/purchase/homePage/productCard";
 import { getPurchasedProducts } from "@/app/purchase/helper/productHelper";
-import { getCustomerName } from "@/app/purchase/helper/checkoutHelper";
+import { getCustomerName, saveAndGetShippingAddress } from "@/app/purchase/helper/checkoutHelper";
 interface OrderItem {
   item_name: string;
   quantity_ordered: number;
@@ -9,19 +9,24 @@ interface OrderItem {
 
 interface OrderData {
   customer_name: string;
+  shipment_address: string;
+  business_id: number;
   items: OrderItem[];
 }
 
+const Snap_Savvy_Business_Id: number= 5280;
 const productMap: Map<Product, number> = getPurchasedProducts();
-
 export async function placeOrder() {
   // Prepare order data with customer name and item list
   const orderData: OrderData = {
     customer_name: getCustomerName(),
+    shipment_address: saveAndGetShippingAddress(),
+    business_id: Snap_Savvy_Business_Id,
     items: Array.from(productMap).map(([product, quantity]) => ({
       item_name: product.name,
       item_id: product.id,
       quantity_ordered: quantity,
+      weight: product.weight
     })),
   };
 

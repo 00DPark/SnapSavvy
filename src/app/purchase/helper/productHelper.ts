@@ -126,6 +126,7 @@ function loadCartFromLocalStorage(): Map<Product, number> {
       price: item.price,
       description: item.description,  // Ensure this field exists
       image: item.image,  // Ensure this field exists
+      weight: item.weight
     };
     productMap.set(product, item.quantity);
   });
@@ -142,6 +143,7 @@ function saveCartToLocalStorage() {
     price: product.price,
     description: product.description,  // Include all required properties
     image: product.image,  // Include all required properties
+    weight: product.weight,
     quantity,
   }));
   localStorage.setItem("purchasedProducts", JSON.stringify(productsArray));

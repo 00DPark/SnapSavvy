@@ -129,3 +129,14 @@ export function setCustomerAddressCountry(country: string) {
 export function getCustomerAddressCountry() {
   return AddressCountry;
 }
+
+/**
+ * Constructs the full shipping address as a formatted string,
+ * saves it to localStorage, and returns it.
+ * @returns The formatted shipping address.
+ */
+export function saveAndGetShippingAddress(): string {
+  const shippingAddress = `${AddressStreet}, ${AddressCity}, ${AddressState} ${AddressPostalCode} ${AddressCountry}`;
+  saveToLocalStorage("ShippingAddress", shippingAddress);
+  return shippingAddress;
+}
