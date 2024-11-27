@@ -6,24 +6,25 @@ import CancelPage from '../../viewCancel/page';
 import SuccessPage from '../page';
 import { Product } from '../../homePage/productCard';
 import { getPurchasedProducts } from '../../helper/productHelper';
+import { getCustomerName } from '../../helper/checkoutHelper';
+
 const ProcessPage = () => {
   const [orderStatus, setOrderStatus] = useState<'processing' | 'success' | 'failure'>('processing');
 
   // Hardcode customer name and use getPurchasedProducts for product map
-  const customerName = "John Doe";  // Hardcoded customer name
+  const customerName = getCustomerName(); // Hardcoded customer name
   const productMap: Map<Product, number> = getPurchasedProducts();
 
   // Proceed with order creation after Stripe Checkout session is created
   useEffect(() => {
     const placeOrderAsync = async () => {
       const orderData = {
-        customer_name: customerName,  // Using the hardcoded name
+        customer_name: customerName, // Using the hardcoded name
         items: Array.from(productMap).map(([product, quantity]) => ({
           item_name: product.name, // Using the actual product name
           quantity_ordered: quantity, // Using the actual quantity
         })),
       };
-      console.log(getPurchasedProducts)
       console.log("Order Data: ", JSON.stringify(orderData, null, 2));
 
       try {
@@ -48,12 +49,30 @@ const ProcessPage = () => {
   }, [productMap]); // Run when productMap changes
 
   return (
-    <div>
-      {orderStatus === 'processing' && <div>Processing your order...</div>}
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="p-6 max-w-lg w-full bg-white shadow-md rounded-md">
+        {orderStatus === 'processing' && (
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Processing Your Order</h2>
+            <p className="text-gray-500">We are currently processing your order. This might take a few seconds...</p>
+            <div className="mt-6">
+              <div className="w-10 h-10 mx-auto border-4 border-dashed rounded-full border-blue-500 animate-spin"></div>
+            </div>
+          </div>
+        )}
 
-      {orderStatus === 'success' && <SuccessPage />} {/* Show Confirmation Page on success */}
+        {orderStatus === 'success' && (
+          <div>
+            <SuccessPage />
+          </div>
+        )}
 
-      {orderStatus === 'failure' && <CancelPage />} {/* Show Cancel Page on failure */}
+        {orderStatus === 'failure' && (
+          <div>
+            <CancelPage />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
