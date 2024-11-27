@@ -1,7 +1,15 @@
+"use client"
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { FaTimesCircle } from 'react-icons/fa';
+import { clearCart } from '../helper/productHelper';
 
 const CancelPage = () => {
+  useEffect(() => {
+    // Clear the cart when the CancelPage component mounts
+    clearCart();
+  }, []); // Empty dependency array ensures it runs only once on mount
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-red-100">
       <FaTimesCircle className="text-red-500 text-6xl mb-4" />
